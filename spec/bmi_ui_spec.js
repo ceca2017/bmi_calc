@@ -61,24 +61,25 @@ describe('BMI_UI (imp) - index.html', function() {
 
 describe('BMI_UI (metric) - take 2 - index.html', function() {
 
-    it('expect weight field to show', function() {
-      expect($('#weight')).toExist();
-    });
-
-    it('captures weight as 90', function() {
-      $('#weight').val('90');
-      expect($('#weight').val()).toEqual('90');
-    });
 
 
   beforeEach(function() {
-    //jasmine.getFixtures().fixturesPath = '.';
-    //loadFixtures('index.html');
-    //$.holdReady(false);
+    jasmine.getFixtures().fixturesPath = '.';
+    loadFixtures('index.html');
+    $.holdReady(false);
     $('#metric_true').click(); //.trigger('click');
     $('#weight').val('90');
     $('#height').val('186');
     $('#calculate').trigger('click');
+  });
+
+  it('expect weight field to show', function() {
+    expect($('#weight')).toExist();
+  });
+
+  it('captures weight as 90', function() {
+    $('#weight').val('90');
+    expect($('#weight').val()).toEqual('90');
   });
 
   it('display BMI Value', function() {
