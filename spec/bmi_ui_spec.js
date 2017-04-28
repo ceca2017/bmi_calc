@@ -1,32 +1,33 @@
- describe('BMI_UI - index.html', function() {
-    beforeEach(function() {
-        jasmine.getFixtures().fixturesPath = '.';
-        loadFixtures('index.html');
-        $.holdReady(false);
-    });
-});
+//  describe('BMI_UI - index.html', function() {
+//     beforeEach(function() {
+//         jasmine.getFixtures().fixturesPath = '.';
+//         loadFixtures('index.html');
+//         $.holdReady(false);
+//     });
+// });
 
 describe('BMI_UI - index.html', function() {
-
-    it('expect weight field to show', function() {
-      expect($('#weight')).toExist();
+    beforeEach(function() {
+      jasmine.getFixtures().fixturesPath = '.';
+      loadFixtures('index.html');
+      $.holdReady(false);
+      $('#metric_true').trigger('click');
+      $('#weight').val('90');
+      $('#height').val('186');
+      $('#calculate').trigger('click');
     });
 
+    // it('expect weight field to show', function() {
+    //   // debugger;
+    //   expect($('#weight')).not.toBeVisible();
+    // });
+
     it('captures weight as 90', function() {
-      $('#weight').val('90');
+      // $('#weight').val('90');
       expect($('#weight').val()).toEqual('90');
     });
 
 
-  beforeEach(function() {
-    //jasmine.getFixtures().fixturesPath = '.';
-    //loadFixtures('index.html');
-    //$.holdReady(false);
-    $('#metric_true').click(); //.trigger('click');
-    $('#weight').val('90');
-    $('#height').val('186');
-    $('#calculate').trigger('click');
-  });
 
   it('display BMI Value', function() {
     expect($('#display_value').text()).toEqual('Your BMI is 26.01');
